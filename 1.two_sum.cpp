@@ -16,19 +16,30 @@
 // -109 <= nums[i] <= 109
 // -109 <= target <= 109
 // Only one valid answer exists.
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int,int>ans;
-        for(int i=0;i<nums.size();i++){
-            int item=target-nums[i];
-            if(ans.find(item)!=ans.end()){
-                return {ans[item],i};
+        unordered_map<int, int> ans;
+        for (int i = 0; i < nums.size(); i++) {
+            int item = target - nums[i];
+            if (ans.find(item) != ans.end()) {
+                return {ans[item], i};
             }
-            ans[nums[i]]=i;
+            ans[nums[i]] = i;
         }
         return {};
     }
 };
+int main() {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+
+    Solution sol;
+    vector<int> result = sol.twoSum(nums, target);
+
+    cout << "Output: [" << result[0] << ", " << result[1] << "]\n";
+    return 0;
+}
